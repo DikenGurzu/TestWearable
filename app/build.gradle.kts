@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.myfirstwearos"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.myfirstwearos"
@@ -24,6 +24,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -40,6 +41,8 @@ android {
 
 dependencies {
 
+    implementation(libs.horologist.composables)
+    implementation(libs.horologist.compose.layout)
     implementation(libs.health.services.client)
     implementation(libs.play.services.wearable)
     implementation(platform(libs.compose.bom))
@@ -57,6 +60,8 @@ dependencies {
     implementation(libs.horologist.compose.tools)
     implementation(libs.horologist.tiles)
     implementation(libs.watchface.complications.data.source.ktx)
+    implementation(libs.play.services.location)
+    implementation(libs.compose.material3)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
